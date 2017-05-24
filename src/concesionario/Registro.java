@@ -5,10 +5,10 @@
  */
 package concesionario;
 
-import clases.Comprobar_Campos;
+import clases.Comprobaciones;
 import clases.Dni;
 import clases.Usuario;
-import clases.Usuarios;
+import clases.ListaUsuarios;
 import excepciones.ConcesionarioExcepciones;
 import javax.swing.JOptionPane;
 
@@ -178,12 +178,12 @@ public class Registro extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Dni miDni = new Dni(textDni.getText());
-            if (Comprobar_Campos.comprobar(textNombre.getText(), textApellido.getText(), textContra.getText())) {
+            if (Comprobaciones.comprobar(textNombre.getText(), textApellido.getText(), textContra.getText())) {
                 String sexo = comboSexo.getSelectedItem().toString();
  
                 Usuario usuario1 = new Usuario(textNombre.getText(), textApellido.getText(), miDni, textContra.getText(), sexo);
-                Usuarios.usu.nuevo_usuario(usuario1);
-                Usuarios.usu.listar();
+                ListaUsuarios.usu.nuevo_usuario(usuario1);
+                ListaUsuarios.usu.listar();
                
                 
                 this.setVisible(false);

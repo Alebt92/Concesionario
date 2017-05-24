@@ -165,7 +165,8 @@ public class Gestion extends javax.swing.JFrame {
         
         if(jTipoVeh.getSelectedItem().equals("Furgoneta")){
             Furgoneta miFurgoneta = new Furgoneta(jTextMarca.getText(), jtextModelo.getText(),
-            jTextColor.getText(), jTextMotor.getText(), jTextCapacidad.getText(), 2);
+            jTextColor.getText(), jTextMotor.getText(), jTextCapacidad.getText(), 2);//AL AÑADIR DEBE
+            //SER AUTOINCREMENTO, CORREGIR.
             veh.add(miFurgoneta);
             ListaFurgonetas.mLista.add_coche(miFurgoneta);
             mostrar();

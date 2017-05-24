@@ -20,6 +20,14 @@ public class Furgoneta extends Vehiculos{
     public String getCapacidad() {
         return capacidad;
     }
+
+    @Override
+    public String toString() {
+        return "Furgoneta: "+ "\n" + "Marca: " + this.marca + "\nModelo: " + this.modelo + 
+                "\nColor: " + this.color + "\nMotor: " + this.motor + "\nCapacidad:" + this.capacidad;
+    }
+    
+    
     
    
     

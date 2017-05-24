@@ -24,22 +24,22 @@ public class ListaFurgonetas {
     public void add_coche(Furgoneta furgo){
         miFurgo.add(furgo);
     }
-    public String buscar_furgo(String id){
+    public Furgoneta buscar_furgo(int id){
          String cadena = "ERROR" + id; //mensaje por defecto
         ListIterator<Furgoneta> iterList = miFurgo.listIterator();
-        Furgoneta temp;
+        Furgoneta temp = null;
         
-        if(miFurgo.isEmpty()){ // la agenda está vacía
-            cadena = "La agenda está vacía";
+        if(miFurgo.isEmpty()){ //
+            cadena = "No hay furgonetas en la lista";
         }else{
             while(iterList.hasNext()){
                 temp = iterList.next();
-                if(id.equalsIgnoreCase(temp.getId())){
-                    cadena = temp.toString();
+                if(id == temp.getId()){
+                     return temp;
                 }
             }
         }
-        return cadena;
+        return temp;
     }
      public ArrayList<Furgoneta> getListaFurgo() {
         return miFurgo;

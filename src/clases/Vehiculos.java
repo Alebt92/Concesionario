@@ -15,14 +15,19 @@ public abstract class Vehiculos {
     String color;
     String motor;
     int tipo;
-    String id;
+    int id;
 
+    static int contador = 1;
     public Vehiculos(String marca, String modelo, String color, String motor, int tipo) {
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
         this.motor = motor;
         this.tipo = tipo;
+        this.id=contador;
+        contador++;
+        
+        System.out.println("Veh creado id: " + this.id);
     }
 
     public int getTipo() {
@@ -45,7 +50,7 @@ public abstract class Vehiculos {
         return motor;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
     

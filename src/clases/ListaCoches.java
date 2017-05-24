@@ -6,6 +6,7 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
@@ -27,5 +28,25 @@ public class ListaCoches {
      public ArrayList<Coche> getListaCoche() {
         return miCoche;
     }
+     
+     
+     public Coche buscar_coche(int id){
+         String cadena = "ERROR" + id; //mensaje por defecto
+        ListIterator<Coche> iterList = miCoche.listIterator();
+        Coche temp = null;
+        
+        if(miCoche.isEmpty()){ //
+            cadena = "No hay coches en la lista";
+        }else{
+            while(iterList.hasNext()){
+                temp = iterList.next();
+                if(id == temp.getId()){
+                    return temp;
+                }
+            }
+        }
+        return temp;
+    }
+     
     
 }

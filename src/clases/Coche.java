@@ -20,6 +20,13 @@ public class Coche extends Vehiculos{
     public String getN_plazas() {
         return n_plazas;
     }
+
+    @Override
+    public String toString() {
+        return "Turismo: "+ "\n" + "Marca: " + this.marca + "\nModelo: " + this.modelo + 
+                "\nColor: " + this.color + "\nMotor: " + this.motor + "\nNumero plazas:" + this.n_plazas;
+    }
+
     
     
 }

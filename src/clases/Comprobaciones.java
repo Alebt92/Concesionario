@@ -11,7 +11,7 @@ import excepciones.ConcesionarioExcepciones;
  *
  * @author dam120
  */
-public class Comprobar_Campos {
+public class Comprobaciones {
     static public boolean comprobar(String nombre, String apellido, String contra) throws ConcesionarioExcepciones{
         boolean correcto = false;
         if(nombre.isEmpty() || nombre.length() < 4){

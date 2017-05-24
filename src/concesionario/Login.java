@@ -11,7 +11,7 @@ import clases.Furgoneta;
 import clases.ListaCoches;
 import clases.ListaFurgonetas;
 import clases.Usuario;
-import clases.Usuarios;
+import clases.ListaUsuarios;
 import excepciones.ConcesionarioExcepciones;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
     public Login() throws ConcesionarioExcepciones {
         Dni miDni = new Dni("44444444E");
         Usuario miUsuario = new Usuario("Admin", "Admin", miDni, "Admin", "Masculino");
-        Usuarios.usu.nuevo_usuario(miUsuario);
+        ListaUsuarios.usu.nuevo_usuario(miUsuario);
         
         Coche focus = new Coche("Ford", "Focus", "Verde", "D 90cv", "5", 1);
         Coche fiesta = new Coche("Ford", "Fiesta", "Negro", "D 75cv", "3", 1);
@@ -60,11 +60,11 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         textUsuario = new javax.swing.JTextField();
-        textContra = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        textContra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,8 +101,6 @@ public class Login extends javax.swing.JFrame {
 
         textUsuario.setText("Admin");
 
-        textContra.setText("Admin");
-
         jButton1.setText("Conectar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +121,8 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Clave:");
 
+        textContra.setText("Admin");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -135,16 +135,16 @@ public class Login extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
                                 .addGap(36, 36, 36)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textContra, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(textUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                    .addComponent(textContra))
+                                .addGap(18, 18, 18))
+                            .addComponent(jButton1))
                         .addGap(49, 49, 49))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -154,15 +154,17 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textContra, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 10, Short.MAX_VALUE))
+                    .addComponent(textContra))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,7 +186,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         if(Usuarios.usu.comprobar_datos_usuario(textUsuario.getText(), textContra.getText())){
+         if(ListaUsuarios.usu.comprobar_datos_usuario(textUsuario.getText(), textContra.getText())){
             this.setVisible(false);
              System.out.println("LOGIN CORRECTO");
             Ges vGes = new Ges();
@@ -249,7 +251,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField textContra;
+    private javax.swing.JPasswordField textContra;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,15 +13,15 @@ import java.util.ListIterator;
  *
  * @author dam120
  */
-public class Usuarios {
+public class ListaUsuarios {
 
     private ArrayList<Usuario> user;
 
-    public Usuarios() {
+    public ListaUsuarios() {
         user = new ArrayList<Usuario>();
     }
 
-    static public Usuarios usu = new Usuarios();
+    static public ListaUsuarios usu = new ListaUsuarios();
 
     public void nuevo_usuario(Usuario usuario) throws ConcesionarioExcepciones {
         if (!comprobar_existe(usuario)) {
