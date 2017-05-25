@@ -74,7 +74,10 @@ public class Usuario{
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre +"Apellido="+ apellido + dni + ", clave=" + clave + ", sexo=" + sexo + '}';
+        return "Usuario: " + this.nombre +
+                "\nApellido: " + this.apellido + 
+                "\nSexo: " + this.sexo +
+                "\n" + this.dni;
     }
 
  

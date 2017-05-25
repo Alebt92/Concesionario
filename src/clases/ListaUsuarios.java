@@ -59,7 +59,23 @@ public class ListaUsuarios {
 
         }
     }
-
+     
+      public Usuario buscar_usuario(String nombre){
+          ListIterator<Usuario> iterList = user.listIterator();
+          Usuario temp = null;
+        if(user.isEmpty()){
+            System.out.println("No hay usuarios en la lista");
+        }else{
+             while(iterList.hasNext()){
+                temp = iterList.next();
+                if(nombre.equalsIgnoreCase(temp.getNombre())){
+                   return temp;
+                }
+            }
+        }
+        return temp;
+     }
+     
     private boolean comprobar_existe(Usuario usuario) {
         boolean existe = false;
         Usuario temp;

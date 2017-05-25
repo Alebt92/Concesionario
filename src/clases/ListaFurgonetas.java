@@ -41,6 +41,23 @@ public class ListaFurgonetas {
         }
         return temp;
     }
+    
+     public void eliminar_furgoneta(int id) {
+        boolean borrado = false;
+        ListIterator<Furgoneta> iterList = miFurgo.listIterator();
+        Furgoneta temp;
+        if (miFurgo.isEmpty()) {
+            System.out.println("La lista está vacía");
+        } else {
+            while (iterList.hasNext() && borrado == false) {
+                temp = iterList.next();
+                if (id == temp.getId()) {
+                    miFurgo.remove(temp);
+                    borrado = true;
+                }
+            }
+        }
+    }
      public ArrayList<Furgoneta> getListaFurgo() {
         return miFurgo;
     }

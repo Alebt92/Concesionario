@@ -45,10 +45,12 @@ public class Gestion extends javax.swing.JFrame {
         jtextModelo = new javax.swing.JTextField();
         jTextColor = new javax.swing.JTextField();
         jTextMotor = new javax.swing.JTextField();
-        jTextNPlazas = new javax.swing.JTextField();
         jBotonAnadir = new javax.swing.JButton();
         jTextCapacidad = new javax.swing.JTextField();
         jBotonVolver = new javax.swing.JButton();
+        comboPlazas = new javax.swing.JComboBox();
+        LabelPlazas = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablaVeh = new javax.swing.JTable();
@@ -67,42 +69,49 @@ public class Gestion extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
         jTextMarca.setBorder(javax.swing.BorderFactory.createTitledBorder("Marca"));
-        jPanel1.add(jTextMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 141, -1));
+        jPanel1.add(jTextMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 140, -1));
 
         jTipoVeh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Turismo", "Furgoneta" }));
-        jTipoVeh.setOpaque(false);
-        jPanel1.add(jTipoVeh, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 140, 30));
+        jPanel1.add(jTipoVeh, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 140, 30));
 
         jtextModelo.setBorder(javax.swing.BorderFactory.createTitledBorder("Modelo"));
-        jPanel1.add(jtextModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 141, -1));
+        jPanel1.add(jtextModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 141, -1));
 
         jTextColor.setBorder(javax.swing.BorderFactory.createTitledBorder("Color"));
-        jPanel1.add(jTextColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 141, -1));
+        jPanel1.add(jTextColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 141, -1));
 
         jTextMotor.setBorder(javax.swing.BorderFactory.createTitledBorder("Motor"));
-        jPanel1.add(jTextMotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 141, -1));
+        jPanel1.add(jTextMotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 140, -1));
 
-        jTextNPlazas.setBorder(javax.swing.BorderFactory.createTitledBorder("Nº Plazas"));
-        jPanel1.add(jTextNPlazas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 141, -1));
-
-        jBotonAnadir.setText("Añadir vehículo");
+        jBotonAnadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir.jpg"))); // NOI18N
         jBotonAnadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBotonAnadirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBotonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 53, -1, 30));
+        jPanel1.add(jBotonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 110, 30));
 
         jTextCapacidad.setBorder(javax.swing.BorderFactory.createTitledBorder("Capacidad"));
-        jPanel1.add(jTextCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 100, 141, -1));
+        jPanel1.add(jTextCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 141, -1));
 
-        jBotonVolver.setText("Volver atrás");
+        jBotonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.jpg"))); // NOI18N
         jBotonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBotonVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jBotonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 100, 30));
+        jPanel1.add(jBotonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 110, 30));
+
+        comboPlazas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "5", "7" }));
+        comboPlazas.setBorder(null);
+        jPanel1.add(comboPlazas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 140, 30));
+
+        LabelPlazas.setText("Numero de plazas:");
+        jPanel1.add(LabelPlazas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/llaves.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 140, 100));
 
         jTablaVeh.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,7 +132,7 @@ public class Gestion extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,9 +152,10 @@ public class Gestion extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -153,10 +163,12 @@ public class Gestion extends javax.swing.JFrame {
 
     private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
        if(jTipoVeh.getSelectedItem().equals("Furgoneta")){
-           jTextNPlazas.setVisible(false);
+           comboPlazas.setVisible(false);
            jTextCapacidad.setVisible(true);
+           LabelPlazas.setVisible(false);
        }else{
-           jTextNPlazas.setVisible(true);
+           LabelPlazas.setVisible(true);
+           comboPlazas.setVisible(true);
            jTextCapacidad.setVisible(false);
        }
     }//GEN-LAST:event_jPanel1MouseMoved
@@ -165,14 +177,13 @@ public class Gestion extends javax.swing.JFrame {
         
         if(jTipoVeh.getSelectedItem().equals("Furgoneta")){
             Furgoneta miFurgoneta = new Furgoneta(jTextMarca.getText(), jtextModelo.getText(),
-            jTextColor.getText(), jTextMotor.getText(), jTextCapacidad.getText(), 2);//AL AÑADIR DEBE
-            //SER AUTOINCREMENTO, CORREGIR.
+            jTextColor.getText(), jTextMotor.getText(), jTextCapacidad.getText(), 2);
             veh.add(miFurgoneta);
             ListaFurgonetas.mLista.add_coche(miFurgoneta);
             mostrar();
         }else{
             Coche miCoche = new Coche(jTextMarca.getText(), jtextModelo.getText(),
-            jTextColor.getText(), jTextMotor.getText(), jTextNPlazas.getText(), 1);
+            jTextColor.getText(), jTextMotor.getText(), comboPlazas.getSelectedItem().toString(), 1);
             veh.add(miCoche);
             ListaCoches.milista.add_coche(miCoche);
             mostrar();
@@ -180,7 +191,7 @@ public class Gestion extends javax.swing.JFrame {
     }//GEN-LAST:event_jBotonAnadirActionPerformed
 
     private void jBotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonVolverActionPerformed
-        Ges vGes = new Ges();
+        Ges vGes = new Ges("");
         vGes.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jBotonVolverActionPerformed
@@ -241,9 +252,12 @@ public class Gestion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelPlazas;
+    private javax.swing.JComboBox comboPlazas;
     private javax.swing.JButton jBotonAnadir;
     private javax.swing.JButton jBotonVolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
@@ -252,7 +266,6 @@ public class Gestion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextColor;
     private javax.swing.JTextField jTextMarca;
     private javax.swing.JTextField jTextMotor;
-    private javax.swing.JTextField jTextNPlazas;
     private javax.swing.JComboBox jTipoVeh;
     private javax.swing.JTextField jtextModelo;
     // End of variables declaration//GEN-END:variables

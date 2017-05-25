@@ -24,6 +24,7 @@ public class ModeloListaVehiculos extends DefaultListModel {
     public int getSize() {
         return veh.tam();
     }
+    
     @Override
     public Object getElementAt(int index) {
         String cadena = veh.listaVehiculos.get(index).getModelo();

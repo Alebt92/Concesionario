@@ -11,7 +11,6 @@ package clases;
  */
 public class Furgoneta extends Vehiculos{
     String capacidad;
-    String id;
     public Furgoneta(String marca, String modelo, String color, String motor, String capacidad, int tipo) {
         super(marca, modelo, color, motor, tipo);
         this.capacidad = capacidad;

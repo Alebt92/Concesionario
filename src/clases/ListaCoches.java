@@ -48,5 +48,21 @@ public class ListaCoches {
         return temp;
     }
      
+     public void eliminar_coche(int id) {
+        boolean borrado = false;
+        ListIterator<Coche> iterList = miCoche.listIterator();
+        Coche temp;
+        if (miCoche.isEmpty()) {
+            System.out.println("La lista está vacía");
+        } else {
+            while (iterList.hasNext() && borrado == false) {
+                temp = iterList.next();
+                if (id == temp.getId()) {
+                    miCoche.remove(temp);
+                    borrado = true;
+                }
+            }
+        }
+    }
     
 }
