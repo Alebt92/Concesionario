@@ -27,7 +27,7 @@ public abstract class Vehiculos {
         this.id=contador;
         contador++;
         
-        System.out.println("Veh creado id: " + this.id);
+       // System.out.println("Veh creado id: " + this.id);//comprobar si la asigna la id correctamente
     }
 
     public int getTipo() {

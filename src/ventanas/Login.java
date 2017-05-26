@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package concesionario;
+package ventanas;
 
 import clases.Coche;
 import clases.Dni;
@@ -16,6 +16,7 @@ import excepciones.ConcesionarioExcepciones;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import clases.ListaVehiculos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -169,12 +170,13 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (ListaUsuarios.usu.comprobar_datos_usuario(textUsuario.getText(), textContra.getText())) {
             this.setVisible(false);
-            System.out.println("LOGIN CORRECTO");
-            Ges vGes = new Ges(textUsuario.getText());
+           // System.out.println("LOGIN CORRECTO");
+            GestionVehiculo vGes = new GestionVehiculo(textUsuario.getText());
             vGes.setVisible(true);
             this.setVisible(false);
         } else {
-            System.out.println("LOGIN INCORRECTO");
+            JOptionPane.showMessageDialog(this, "Datos incorrectos o usuario inexistente", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -225,7 +227,7 @@ public class Login extends javax.swing.JFrame {
                     ListaVehiculos.miListaCoches.add_coche(focus);
                     ListaVehiculos.miListaCoches.add_coche(fiesta);
 
-                    Furgoneta furgo = new Furgoneta("Ford", "Trend", "Negro", "D 75cv", "300", 2);
+                    Furgoneta furgo = new Furgoneta("Ford", "Transit", "Negro", "D 75cv", "300", 2);
                     ListaFurgonetas.mLista.add_coche(furgo);
                     ListaVehiculos.miListaCoches.add_coche(furgo);
 

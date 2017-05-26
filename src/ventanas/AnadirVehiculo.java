@@ -3,27 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package concesionario;
+package ventanas;
 
 import clases.Coche;
+import clases.Comprobaciones;
 import clases.Furgoneta;
 import clases.ListaCoches;
 import clases.ListaFurgonetas;
 import clases.ListaVehiculos;
 import clases.Vehiculos;
+import excepciones.ConcesionarioExcepciones;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author dam120
  */
-public class Gestion extends javax.swing.JFrame {
+public class AnadirVehiculo extends javax.swing.JFrame {
 
     ArrayList<Vehiculos> veh = ListaVehiculos.miListaCoches.getListaCoche();
+
     /**
      * Creates new form Gestion
      */
-    public Gestion() {
+    public AnadirVehiculo() {
         initComponents();
         jTextCapacidad.setVisible(false);
         mostrar();
@@ -65,8 +69,8 @@ public class Gestion extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Gestión de vehículos en Stock");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        jLabel1.setText("Añadir un nuevo vehículo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         jTextMarca.setBorder(javax.swing.BorderFactory.createTitledBorder("Marca"));
         jPanel1.add(jTextMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 140, -1));
@@ -162,60 +166,69 @@ public class Gestion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
-       if(jTipoVeh.getSelectedItem().equals("Furgoneta")){
-           comboPlazas.setVisible(false);
-           jTextCapacidad.setVisible(true);
-           LabelPlazas.setVisible(false);
-       }else{
-           LabelPlazas.setVisible(true);
-           comboPlazas.setVisible(true);
-           jTextCapacidad.setVisible(false);
-       }
+        if (jTipoVeh.getSelectedItem().equals("Furgoneta")) {
+            comboPlazas.setVisible(false);
+            jTextCapacidad.setVisible(true);
+            LabelPlazas.setVisible(false);
+        } else {
+            LabelPlazas.setVisible(true);
+            comboPlazas.setVisible(true);
+            jTextCapacidad.setVisible(false);
+        }
     }//GEN-LAST:event_jPanel1MouseMoved
 
     private void jBotonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonAnadirActionPerformed
-        
-        if(jTipoVeh.getSelectedItem().equals("Furgoneta")){
-            Furgoneta miFurgoneta = new Furgoneta(jTextMarca.getText(), jtextModelo.getText(),
-            jTextColor.getText(), jTextMotor.getText(), jTextCapacidad.getText(), 2);
-            veh.add(miFurgoneta);
-            ListaFurgonetas.mLista.add_coche(miFurgoneta);
-            mostrar();
-        }else{
-            Coche miCoche = new Coche(jTextMarca.getText(), jtextModelo.getText(),
-            jTextColor.getText(), jTextMotor.getText(), comboPlazas.getSelectedItem().toString(), 1);
-            veh.add(miCoche);
-            ListaCoches.milista.add_coche(miCoche);
-            mostrar();
+        try {
+            if (Comprobaciones.comprobar_gestion(jTextMarca.getText(), jtextModelo.getText(), jTextColor.getText(),
+                    jTextMotor.getText())) {
+                if (jTipoVeh.getSelectedItem().equals("Furgoneta")) {
+                    Furgoneta miFurgoneta = new Furgoneta(jTextMarca.getText(), jtextModelo.getText(),
+                            jTextColor.getText(), jTextMotor.getText(), jTextCapacidad.getText(), 2);
+                    veh.add(miFurgoneta);
+                    ListaFurgonetas.mLista.add_coche(miFurgoneta);
+                    mostrar();
+                } else {
+                    Coche miCoche = new Coche(jTextMarca.getText(), jtextModelo.getText(),
+                            jTextColor.getText(), jTextMotor.getText(), comboPlazas.getSelectedItem().toString(), 1);
+                    veh.add(miCoche);
+                    ListaCoches.milista.add_coche(miCoche);
+                    mostrar();
+                }
+
+            }
+        } catch (ConcesionarioExcepciones err) {
+            JOptionPane.showMessageDialog(this, err.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+
     }//GEN-LAST:event_jBotonAnadirActionPerformed
 
     private void jBotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonVolverActionPerformed
-        Ges vGes = new Ges("");
+        GestionVehiculo vGes = new GestionVehiculo("");
         vGes.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jBotonVolverActionPerformed
 
-    
-    public void mostrar(){
-        String matriz [][] = new String [veh.size()][4];
-        
+    public void mostrar() {
+        String matriz[][] = new String[veh.size()][4];
+
         for (int i = 0; i < veh.size(); i++) {
             matriz[i][0] = veh.get(i).getMarca();
             matriz[i][1] = veh.get(i).getModelo();
             matriz[i][2] = veh.get(i).getMotor();
             matriz[i][3] = veh.get(i).getColor();
-            
+
         }
-        
+
         jTablaVeh.setModel(new javax.swing.table.DefaultTableModel(
-            matriz,
-            new String [] {
-                "Marca", "Modelo", "Motor", "Color"
-            }
+                matriz,
+                new String[]{
+                    "Marca", "Modelo", "Motor", "Color"
+                }
         ));
-        
+
     }
+
     /**
      * @param args the command line arguments
      */
@@ -233,20 +246,21 @@ public class Gestion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gestion().setVisible(true);
+                new AnadirVehiculo().setVisible(true);
             }
         });
     }

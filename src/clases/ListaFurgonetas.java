@@ -25,12 +25,11 @@ public class ListaFurgonetas {
         miFurgo.add(furgo);
     }
     public Furgoneta buscar_furgo(int id){
-         String cadena = "ERROR" + id; //mensaje por defecto
         ListIterator<Furgoneta> iterList = miFurgo.listIterator();
         Furgoneta temp = null;
         
-        if(miFurgo.isEmpty()){ //
-            cadena = "No hay furgonetas en la lista";
+        if(miFurgo.isEmpty()){
+            System.out.println("Vacía");
         }else{
             while(iterList.hasNext()){
                 temp = iterList.next();

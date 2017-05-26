@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package concesionario;
+package ventanas;
 
 import clases.Comprobaciones;
 import clases.Dni;
@@ -179,12 +179,9 @@ public class Registro extends javax.swing.JFrame {
                 this.setVisible(false);
                 Login ventanaLogin = new Login();
                 ventanaLogin.setVisible(true);
-
-                System.out.println("REGISTRO CORRECTO");
             }
         } catch (ConcesionarioExcepciones ex) {
-            JOptionPane.showConfirmDialog(this, ex.getMessage(), "ERROR EN EL REGISTRO",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage() ,"ERROR EN EL REGISTRO", JOptionPane.ERROR_MESSAGE);
 
         }
     

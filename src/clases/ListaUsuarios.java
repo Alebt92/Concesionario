@@ -26,7 +26,6 @@ public class ListaUsuarios {
     public void nuevo_usuario(Usuario usuario) throws ConcesionarioExcepciones {
         if (!comprobar_existe(usuario)) {
             user.add(usuario);
-            System.out.println(usuario.getDni());
         } else {
             throw new ConcesionarioExcepciones(5);
         }
@@ -38,7 +37,7 @@ public class ListaUsuarios {
         ListIterator<Usuario> iterList = user.listIterator();
         while (iterList.hasNext()) {
             temp = iterList.next();
-            if (temp.getNombre().equals(nombre)) {
+            if (temp.getNombre().equalsIgnoreCase(nombre)) {
                 if (temp.getClave().equals(contra)) {
                     correcto = true;
                 }

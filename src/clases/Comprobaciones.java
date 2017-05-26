@@ -27,4 +27,14 @@ public class Comprobaciones {
                 
     }
     
+    static public boolean  comprobar_gestion(String marca, String modelo, String color, String motor) throws ConcesionarioExcepciones{
+  
+        
+        if(marca.isEmpty() || modelo.isEmpty() || color.isEmpty() || motor.isEmpty()){
+            throw new ConcesionarioExcepciones(6);
+        }else{
+            return true;
+        }
+    }
+    
 }

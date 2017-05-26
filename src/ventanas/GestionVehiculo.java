@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package concesionario;
+package ventanas;
 
 import clases.Coche;
 import clases.Furgoneta;
@@ -21,14 +21,14 @@ import javax.swing.JOptionPane;
  *
  * @author dam120
  */
-public class Ges extends javax.swing.JFrame {
+public class GestionVehiculo extends javax.swing.JFrame {
     private String nombre;
     ArrayList<Vehiculos> veh = ListaVehiculos.miListaCoches.getListaCoche();
 
     /**
      * Creates new form Ges
      */
-    public Ges(String nombre) {    
+    public GestionVehiculo(String nombre) {    
        this.nombre = nombre;
         mdl = new ModeloListaVehiculos();
         mdl.cargar(ListaVehiculos.miListaCoches);
@@ -203,7 +203,7 @@ public class Ges extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Gestion venGestion = new Gestion();
+        AnadirVehiculo venGestion = new AnadirVehiculo();
         venGestion.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -220,8 +220,7 @@ public class Ges extends javax.swing.JFrame {
                 jTextInfo.setText(tempf.toString());
             }
         } else {
-            JOptionPane.showConfirmDialog(this, "Debes seleccionar una opción para ver la información", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debes seleccionar una opción para ver la información " ,"Error", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -230,8 +229,7 @@ public class Ges extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Usuario temp;
         temp = ListaUsuarios.usu.buscar_usuario(this.nombre);
-        JOptionPane.showConfirmDialog(this, temp.toString(), "Información usuario:",
-                    JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, temp.toString() ,"Perfil", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -240,7 +238,7 @@ public class Ges extends javax.swing.JFrame {
             ListaVehiculos.miListaCoches.eliminar_vehiculo(id);
             mdl.cargar(ListaVehiculos.miListaCoches);
         }else{
-            JOptionPane.showConfirmDialog(this, "Error, ningún vehículo seleccionado", "Error",
+            JOptionPane.showMessageDialog(this, "Error, ningún vehículo seleccionado", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
 
@@ -263,20 +261,21 @@ public class Ges extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ges.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ges.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ges.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ges.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ges("").setVisible(true);
+                new GestionVehiculo("").setVisible(true);
             }
         });
     }

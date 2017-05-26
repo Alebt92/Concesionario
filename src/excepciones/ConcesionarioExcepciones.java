@@ -24,6 +24,7 @@ public class ConcesionarioExcepciones extends Exception{
             case 3: return "El apellido debe contener más de 4 caracteres";
             case 4: return "La clave debe contener más de 4 caracteres";
             case 5: return "Error, el usuario que intentas registrar ya existe!";
+            case 6: return "Marca, modelo, color y motor son campos obligatorios";
             default:
                return "";
         }
